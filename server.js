@@ -10,4 +10,4 @@ app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.listen(PORT), () => console.log('oh it\'s running alright', PORT));
+app.listen(PORT, () => console.log('oh it\'s running alright', PORT));
