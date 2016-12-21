@@ -1,7 +1,28 @@
-#puppy-list-container {
-  align-content: space-around;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 1500px;
+h4 {
+  text-transform: uppercase;
+}
+
+img {
+  width: 150px;
+}
+
+.puppy-list-item {
+  background-color: #FAEBD7;
+  box-shadow: 0 2px 3px #222;
+  margin: 10px;
+  text-align: center;
+  width: 200px;
+  padding: 10px;
+}
+
+.puppy-list-item button {
+  background-color: #fafafa;
+  border: 1px solid black;
+  margin: 2px;
+}
+
+img {
+  width: 15vw;
+  height: 20vh;
+  border: 1px solid black;
 }

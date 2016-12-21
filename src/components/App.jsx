@@ -91,8 +91,8 @@ render(){
   return (
     <div id="app-container">
       <header>
-        <h1>Hello</h1>
-        <img src="http://49.media.tumblr.com/tumblr_md12asbGTX1r5c792o5_250.gif" alt="puppy" />
+        <h1>Welcome to the Puppy World!</h1>
+        {/*<img src="http://49.media.tumblr.com/tumblr_md12asbGTX1r5c792o5_250.gif" alt="puppy" />*/}
       </header>
     <PuppyForm
       puppyFormName={this.state.puppyFormName}

@@ -9,7 +9,9 @@
 }
 
 #form-container button {
-  background-color: #64E279;
-  border: 1px solid #47A76E;
-  margin: 0 5px;
+  background-color: tomato;
+  border: 1px solid black;
+  margin: 0 10px;
+  color: white;
+
 }
