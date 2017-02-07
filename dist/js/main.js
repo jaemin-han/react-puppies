@@ -7513,7 +7513,7 @@
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _PuppyForm=__webpack_require__(/*! ./PuppyForm/PuppyForm.jsx */ 179);var _PuppyForm2=_interopRequireDefault(_PuppyForm);var _PuppyList=__webpack_require__(/*! ./PuppyList/PuppyList.jsx */ 181);var _PuppyList2=_interopRequireDefault(_PuppyList);__webpack_require__(/*! ./normalize.css */ 182);var _App=__webpack_require__(/*! ./App.css */ 183);var _App2=_interopRequireDefault(_App);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}// CREATE A REACT COMPONENT CALLED APP
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _PuppyForm=__webpack_require__(/*! ./PuppyForm/PuppyForm.jsx */ 179);var _PuppyForm2=_interopRequireDefault(_PuppyForm);var _PuppyList=__webpack_require__(/*! ./PuppyList/PuppyList.jsx */ 181);var _PuppyList2=_interopRequireDefault(_PuppyList);__webpack_require__(/*! ./normalize.css */ 185);var _App=__webpack_require__(/*! ./App.css */ 186);var _App2=_interopRequireDefault(_App);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}// CREATE A REACT COMPONENT CALLED APP
 	var App=function(_Component){_inherits(App,_Component);function App(){_classCallCheck(this,App);var _this=_possibleConstructorReturn(this,(App.__proto__||Object.getPrototypeOf(App)).call(this));_this.state={puppies:[],puppyFormName:'',puppyFormURL:''};return _this;}_createClass(App,[{key:'updateFormName',value:function updateFormName(e){this.setState({puppyFormName:e.target.value});}},{key:'updateFormURL',value:function updateFormURL(e){this.setState({puppyFormURL:e.target.value});}},{key:'getAllPuppies',value:function getAllPuppies(){var _this2=this;fetch('/puppies').then(function(r){return r.json();}).then(function(data){_this2.setState({puppies:data});console.log(_this2.state);}).catch(function(err){return console.log(err);});}},{key:'handleAbandonPuppy',value:function handleAbandonPuppy(id){var _this3=this;fetch('/puppies/'+id,{method:'delete'}).then(function(){var puppies=_this3.state.puppies.filter(function(puppy){return puppy.id!==id;});_this3.setState({puppies:puppies});}).catch(function(err){return console.log(err);});}},{key:'handleLikePuppy',value:function handleLikePuppy(id){var _this4=this;fetch('/puppies/like/'+id,{method:'PUT'}).then(function(){var puppies=_this4.state.puppies.map(function(puppy){if(puppy.id===id)puppy.likes+=1;return puppy;});_this4.setState({puppies:puppies});}).catch(function(err){return console.log(err);});}},{key:'handleFormSubmit',value:function handleFormSubmit(){fetch('/puppies',{headers:{'Content-Type':'application/json'},method:'POST',body:JSON.stringify({name:this.state.puppyFormName,url:this.state.puppyFormURL})}).then(this.setState({puppyFormName:'',puppyFormURL:''})).then(this.getAllPuppies()).catch(function(err){return console.log(err);});}},{key:'render',value:function render(){var _this5=this;return _react2.default.createElement('div',{id:'app-container'},_react2.default.createElement('header',null,_react2.default.createElement('h1',null,'Welcome to the Puppy World!')),_react2.default.createElement(_PuppyForm2.default,{puppyFormName:this.state.puppyFormName,updateFormName:function updateFormName(event){return _this5.updateFormName(event);},puppyFormURL:this.state.puppyFormURL,updateFormURL:function updateFormURL(event){return _this5.updateFormURL(event);}}),_react2.default.createElement('h3',null,'These are our adopted puppies'),_react2.default.createElement(_PuppyList2.default,{puppies:this.state.puppies,getAllPuppies:this.getAllPuppies.bind(this),handleAbandonPuppy:this.handleAbandonPuppy.bind(this),handleLikePuppy:this.handleLikePuppy.bind(this)}));}}]);return App;}(_react.Component);exports.default=App;
 
 /***/ },
@@ -7543,38 +7543,20 @@
   \************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _PuppyListItem=__webpack_require__(/*! ../PuppyListItem/PuppyListItem.jsx */ 184);var _PuppyListItem2=_interopRequireDefault(_PuppyListItem);var _PuppyList=__webpack_require__(/*! ./PuppyList.css */ 186);var _PuppyList2=_interopRequireDefault(_PuppyList);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}// create a React Component called _App_
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _PuppyListItem=__webpack_require__(/*! ../PuppyListItem/PuppyListItem.jsx */ 182);var _PuppyListItem2=_interopRequireDefault(_PuppyListItem);var _PuppyList=__webpack_require__(/*! ./PuppyList.css */ 184);var _PuppyList2=_interopRequireDefault(_PuppyList);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}// create a React Component called _App_
 	var PuppyList=function(_Component){_inherits(PuppyList,_Component);function PuppyList(){_classCallCheck(this,PuppyList);return _possibleConstructorReturn(this,(PuppyList.__proto__||Object.getPrototypeOf(PuppyList)).apply(this,arguments));}_createClass(PuppyList,[{key:'componentWillMount',value:function componentWillMount(){this.props.getAllPuppies();}},{key:'renderPuppies',value:function renderPuppies(){var _this2=this;return this.props.puppies.map(function(puppy,i){return _react2.default.createElement(_PuppyListItem2.default,{key:i,name:puppy.name,url:puppy.url,likes:puppy.likes,id:puppy.id,handleAbandonPuppy:_this2.props.handleAbandonPuppy,handleLikePuppy:_this2.props.handleLikePuppy});});}},{key:'render',value:function render(){console.log(_PuppyList2.default);return _react2.default.createElement('div',{id:_PuppyList2.default['puppy-list-container']},this.renderPuppies());}}]);return PuppyList;}(_react.Component);exports.default=PuppyList;
 
 /***/ },
 /* 182 */
-/*!**************************************!*\
-  !*** ./src/components/normalize.css ***!
-  \**************************************/
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 183 */
-/*!********************************!*\
-  !*** ./src/components/App.css ***!
-  \********************************/
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 184 */
 /*!********************************************************!*\
   !*** ./src/components/PuppyListItem/PuppyListItem.jsx ***!
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _PuppyListItem=__webpack_require__(/*! ./PuppyListItem.css */ 185);var _PuppyListItem2=_interopRequireDefault(_PuppyListItem);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var PuppyListItem=function PuppyListItem(props){return _react2.default.createElement('div',{className:_PuppyListItem2.default['puppy-list-item']},_react2.default.createElement('h4',null,props.name),_react2.default.createElement('div',{className:_PuppyListItem2.default['puppy-picture']},_react2.default.createElement('img',{src:props.url,alt:props.name})),_react2.default.createElement('p',null,'Likes: ',props.likes),_react2.default.createElement('button',{onClick:function onClick(){return props.handleLikePuppy(props.id);}},'Like!'),_react2.default.createElement('button',{onClick:function onClick(){return props.handleAbandonPuppy(props.id);}},'Abandon'));};exports.default=PuppyListItem;
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _react=__webpack_require__(/*! react */ 1);var _react2=_interopRequireDefault(_react);var _PuppyListItem=__webpack_require__(/*! ./PuppyListItem.css */ 183);var _PuppyListItem2=_interopRequireDefault(_PuppyListItem);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var PuppyListItem=function PuppyListItem(props){return _react2.default.createElement('div',{className:_PuppyListItem2.default['puppy-list-item']},_react2.default.createElement('h4',null,props.name),_react2.default.createElement('div',{className:_PuppyListItem2.default['puppy-picture']},_react2.default.createElement('img',{src:props.url,alt:props.name})),_react2.default.createElement('p',null,'Likes: ',props.likes),_react2.default.createElement('button',{onClick:function onClick(){return props.handleLikePuppy(props.id);}},'Like!'),_react2.default.createElement('button',{onClick:function onClick(){return props.handleAbandonPuppy(props.id);}},'Abandon'));};exports.default=PuppyListItem;
 
 /***/ },
-/* 185 */
+/* 183 */
 /*!********************************************************!*\
   !*** ./src/components/PuppyListItem/PuppyListItem.css ***!
   \********************************************************/
@@ -7584,7 +7566,7 @@
 	module.exports = {"puppy-list-item":"PuppyListItem__puppy-list-item___2ZlnD"};
 
 /***/ },
-/* 186 */
+/* 184 */
 /*!************************************************!*\
   !*** ./src/components/PuppyList/PuppyList.css ***!
   \************************************************/
@@ -7592,6 +7574,24 @@
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"puppy-list-container":"PuppyList__puppy-list-container___2myG3"};
+
+/***/ },
+/* 185 */
+/*!**************************************!*\
+  !*** ./src/components/normalize.css ***!
+  \**************************************/
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 186 */
+/*!********************************!*\
+  !*** ./src/components/App.css ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

@@ -1,5 +1,5 @@
 #!/bin/bash
-# @author Jason Seminara for General Assembly, 2016
+# @author Jason Seminara for General Assembly, 2016 - deployment_react.sh
 # NPM has some weird ideas about which scripts it likes to fire off when deploying.
 # Let's just do exactly what we want to deploy this React app.
 
